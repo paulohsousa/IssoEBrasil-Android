@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "353111433362",
+    "firebase_url": "https://issoebrasil-3e81a.firebaseio.com",
+    "project_id": "issoebrasil-3e81a",
+    "storage_bucket": "issoebrasil-3e81a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353111433362:android:598d631f9b416173",
+        "android_client_info": {
+          "package_name": "ieb.coffee.com.br.issoebrasil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353111433362-n03ol07kjt62jj09q4npsr9ku1iuujvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ieb.coffee.com.br.issoebrasil",
+            "certificate_hash": "2461db990475e68241c16c013e8e59a9b8a33e42"
+          }
+        },
+        {
+          "client_id": "353111433362-ab18u467fsb79aq19f03sotkrb05bfrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbGnj2SWz4XTWQNFGx_R4MteNWWUHcHkE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353111433362-ab18u467fsb79aq19f03sotkrb05bfrl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "353111433362-oib0pl7cbnqg32rl9adkmkerb43i9dcl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.coffee.IEB"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
