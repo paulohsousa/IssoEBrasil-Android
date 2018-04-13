@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">IssoEBrasil</string>
+    <string name="app_name">Isso é Brasil</string>
+    <string name="item_configuracoes">Configurações</string>
+    <string name="title_activity_cadastro">Cadastre-se</string>
 </resources>
