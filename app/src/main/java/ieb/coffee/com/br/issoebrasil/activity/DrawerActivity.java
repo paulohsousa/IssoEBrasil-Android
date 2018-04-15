@@ -7,7 +7,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.MenuInflater;
 import android.support.design.widget.TabLayout;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +46,7 @@ public class DrawerActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         autenticao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.vp_pagina);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.stl_tabs);
@@ -139,5 +140,10 @@ public class DrawerActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void showScreenMap(View view){
+        Intent intent = new Intent(DrawerActivity.this, MapsActivity.class);
+        startActivity(intent);
     }
 }
