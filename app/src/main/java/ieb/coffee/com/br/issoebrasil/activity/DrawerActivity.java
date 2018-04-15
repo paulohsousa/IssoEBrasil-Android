@@ -143,7 +143,7 @@ public class DrawerActivity extends AppCompatActivity
     }
 
     public void showScreenMap(View view){
-        Intent intent = new Intent(DrawerActivity.this, MapsActivity.class);
+        Intent intent = new Intent(DrawerActivity.this, EducacaoActivity.class);
         startActivity(intent);
     }
 }
