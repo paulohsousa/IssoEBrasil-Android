@@ -26,6 +26,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ieb.coffee.com.br.issoebrasil.activity.LoginActivity" />
         </activity>
+        <activity
+            android:name=".activity.DrawerActivity"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
