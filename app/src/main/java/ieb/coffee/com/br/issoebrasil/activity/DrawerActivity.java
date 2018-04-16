@@ -123,18 +123,17 @@ public class DrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_perfil) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(DrawerActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_settigns) {
+            Intent intent = new Intent(DrawerActivity.this, SettingsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(DrawerActivity.this, ConversasActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -143,7 +142,7 @@ public class DrawerActivity extends AppCompatActivity
     }
 
     public void showScreenMap(View view){
-        Intent intent = new Intent(DrawerActivity.this, EducacaoActivity.class);
+        Intent intent = new Intent(DrawerActivity.this, MapEducacaoActivity.class);
         startActivity(intent);
     }
 }

@@ -56,6 +56,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_email" />
+    <EditText
+        android:id="@+id/edit_cadastro_confirma"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Confirma Senha"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_senha" />
 
     <Button
         android:id="@+id/bt_cadastrar"
@@ -71,5 +86,5 @@
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_senha" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_confirma" />
 </android.support.constraint.ConstraintLayout>

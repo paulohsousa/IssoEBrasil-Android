@@ -1,5 +1,7 @@
 package ieb.coffee.com.br.issoebrasil.model;
 
+import android.location.Location;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
@@ -10,6 +12,11 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private Double latitude;
+    private Double longitude;
+    private String confirmSenha;
+
+
 
     public Usuario() {
 
@@ -51,4 +58,31 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    @Exclude
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    @Exclude
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    @Exclude
+    public String getConfirmSenha() {
+        return confirmSenha;
+    }
+
+    public void setConfirmSenha(String confirmSenha) {
+        this.confirmSenha = confirmSenha;
+    }
+
 }

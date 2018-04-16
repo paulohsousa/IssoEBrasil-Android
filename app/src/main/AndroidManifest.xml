@@ -7,7 +7,22 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="br.iesb.android.androidmaps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="br.iesb.android.androidmaps.permission.MAPS_RECEIVE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -59,8 +74,49 @@
                 android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
         </activity>
         <activity
-            android:name=".activity.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:name=".activity.MapEducacaoActivity"
+            android:label="@string/title_activity_map_educacao">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
+        </activity>
+        <activity
+            android:name=".activity.PerfilActivity"
+            android:label="@string/title_activity_perfil"
+            android:parentActivityName=".activity.DrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
+        </activity>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activity.DrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ConversaActivity"
+            android:label="@string/title_activity_conversas"
+            android:parentActivityName=".activity.DrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ConversasActivity"
+            android:label="@string/title_activity_conversas"
+            android:parentActivityName=".activity.DrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ieb.coffee.com.br.issoebrasil.activity.DrawerActivity" />
+        </activity>
+        <activity android:name=".activity.ValidadorActivity"></activity>
     </application>
 
 </manifest>

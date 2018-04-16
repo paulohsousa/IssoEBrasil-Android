@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+tools:context=".activity.SettingsActivity"
+tools:showIn="@layout/activity_settings">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorbackground"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <EditText
+            android:id="@+id/edit_nome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:ems="10"
+            android:hint="Digite seu nome."
+            android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="217dp" />
+
+        <EditText
+            android:id="@+id/edit_cod_pais"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/edit_nome"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="19dp"
+            android:ems="10"
+            android:hint="+55"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="292dp" />
+
+        <EditText
+            android:id="@+id/edit_cod_area"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edit_cod_pais"
+            android:layout_alignBottom="@+id/edit_cod_pais"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/edit_cod_pais"
+            android:layout_toRightOf="@+id/edit_cod_pais"
+            android:ems="10"
+            android:hint="11"
+            android:inputType="number"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/edit_telefone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/edit_cod_area"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/edit_cod_area"
+            android:layout_toRightOf="@+id/edit_cod_area"
+            android:ems="10"
+            android:hint="995855253"
+            android:inputType="number"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/bt_cadastrar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_telefone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="cadastrar" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

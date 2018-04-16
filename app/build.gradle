@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'android'
 
 android {
     compileSdkVersion 27
@@ -16,6 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+    }
 }
 
 dependencies {
@@ -30,6 +37,12 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:15.0.0'
     compile 'com.google.firebase:firebase-auth:15.0.0'
     compile 'com.google.firebase:firebase-database:15.0.0'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'com.google.android.gms:play-services-location:15.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:converter-jackson:2.3.0'
+    compile 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
 }
 
