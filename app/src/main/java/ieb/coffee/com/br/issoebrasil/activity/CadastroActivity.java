@@ -171,6 +171,7 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     }
+
     private boolean salvarConversa(String idRemetente, String idDestinatario, Conversa conversa){
         try{
             firebase = ConfiguracaoFirebase.getFirebase().child("conversas");

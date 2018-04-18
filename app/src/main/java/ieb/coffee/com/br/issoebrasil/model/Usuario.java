@@ -12,9 +12,11 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String img;
     private Double latitude;
     private Double longitude;
     private String confirmSenha;
+    private String telefone;
 
 
 
@@ -25,6 +27,21 @@ public class Usuario {
     public void salvar(){
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         referenciaFirebase.child("usuario").child(getId()).setValue(this);
+    }
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     @Exclude
     public String getId() {

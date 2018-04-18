@@ -22,6 +22,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +35,8 @@ import ieb.coffee.com.br.issoebrasil.R;
 import ieb.coffee.com.br.issoebrasil.config.ConfiguracaoFirebase;
 import ieb.coffee.com.br.issoebrasil.helper.Base64Custom;
 import ieb.coffee.com.br.issoebrasil.helper.Preferencias;
+import ieb.coffee.com.br.issoebrasil.model.Conversa;
+import ieb.coffee.com.br.issoebrasil.model.Mensagem;
 import ieb.coffee.com.br.issoebrasil.model.Usuario;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
@@ -50,6 +55,14 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private LoginButton loginButton;
 
+    //Dados do destinatario
+    private String nomeUsuarioDestinatario;
+    private String idUsuarioDestinatario;
+
+    //Dados do remetente
+    private String idUsuarioRemetente;
+    private String nomeUsuarioRemetente;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -66,6 +79,8 @@ public class LoginActivity extends AppCompatActivity {
         AppEventsLogger.activateApp(this);
 
         verificarUsuarioLogado();
+
+        usuario = new Usuario();
 
         email = (EditText) findViewById(R.id.edit_login_email);
         senha = (EditText) findViewById(R.id.edit_login_senha);
@@ -122,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             final FirebaseUser user = autenticacao.getCurrentUser();
                             identificadorUsuarioLogado = Base64Custom.codificarBase64(user.getEmail());
-
+                            cadastrarUsuario(user);
                             firebase = ConfiguracaoFirebase.getFirebase()
                                     .child("usuarios")
                                     .child(identificadorUsuarioLogado);
@@ -157,6 +172,62 @@ public class LoginActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    private void cadastrarUsuario(final FirebaseUser user) {
+        Toast.makeText(LoginActivity.this, "Sucesso ao cadastrar usuário", Toast.LENGTH_LONG).show();
+        String identificadorUsuario = Base64Custom.codificarBase64(user.getEmail());
+        usuario.setId(identificadorUsuario);
+        usuario.setEmail(user.getEmail());
+        usuario.setNome(user.getDisplayName());
+        usuario.setImg(user.getPhotoUrl().toString());
+        usuario.setTelefone(user.getPhoneNumber());
+        usuario.salvar();
+
+        nomeUsuarioRemetente = user.getDisplayName();
+        nomeUsuarioDestinatario = "Matheus Freitas";
+        idUsuarioDestinatario = Base64Custom.codificarBase64("matheus@gmail.com");
+
+
+
+
+        Preferencias preferencias = new Preferencias(LoginActivity.this);
+        preferencias.salvarUsuarioPreferencias(identificadorUsuario, usuario.getNome());
+
+        Mensagem mensagem = new Mensagem();
+        mensagem.setIdUsuario(idUsuarioRemetente);
+        mensagem.setMensagem("Olá, Seja Bem Vindo!");
+
+        // salvamos mensagem para o remetente
+        Boolean retornoMensagemRemetente = salvarMensagem(identificadorUsuarioLogado, idUsuarioDestinatario, mensagem);
+        if(!retornoMensagemRemetente){
+            Toast.makeText(LoginActivity.this, "Problema ao salvar mensagem, tente novamente", Toast.LENGTH_LONG).show();
+        }else{
+
+            // salvamos mensagem para o destinatario
+            Boolean retornoMensagemDestinatario = salvarMensagem(idUsuarioDestinatario,idUsuarioRemetente, mensagem);
+            if(!retornoMensagemRemetente){
+                Toast.makeText(LoginActivity.this, "Problema ao salvar mensagem do destinatário, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        // salvamos Conversa para o remetente
+        Conversa conversa = new Conversa();
+        conversa.setIdUsuario(idUsuarioDestinatario);
+        conversa.setNome(nomeUsuarioDestinatario);
+        conversa.setMensagem("Olá, Seja Bem Vindo!");
+        Boolean retornoConversaRemetente = salvarConversa(idUsuarioRemetente, idUsuarioDestinatario, conversa);
+        if(!retornoConversaRemetente){
+            Toast.makeText(LoginActivity.this, "Problema ao salvar conversa, tente novamente!", Toast.LENGTH_LONG).show();
+        }else{
+            // salvamos Conversa para o destinatario
+            conversa = new Conversa();
+            conversa.setIdUsuario(idUsuarioRemetente);
+            conversa.setNome(nomeUsuarioRemetente);
+            conversa.setMensagem("Olá, Seja Bem Vindo!");
+            salvarConversa(idUsuarioDestinatario, idUsuarioRemetente, conversa);
+        }
+
     }
 
     @Override
@@ -207,6 +278,34 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean salvarConversa(String idRemetente, String idDestinatario, Conversa conversa){
+        try{
+            firebase = ConfiguracaoFirebase.getFirebase().child("conversas");
+            firebase.child(idRemetente)
+                    .child(idDestinatario)
+                    .setValue(conversa);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    private boolean salvarMensagem(String idRemetente, String idDestinatario, Mensagem mensagem){
+        try {
+
+            firebase = ConfiguracaoFirebase.getFirebase().child("mensagens");
+            firebase.child(idRemetente)
+                    .child(idDestinatario)
+                    .push().setValue(mensagem);
+
+
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void verificarUsuarioLogado(){
