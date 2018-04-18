@@ -72,7 +72,7 @@ public class EducacaoActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
     }
 
-    private void buscarDados() {
+    /*private void buscarDados() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(TCUEscolas.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -93,12 +93,12 @@ public class EducacaoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Escola>> call, Throwable t) {
-                Log.e("Erro", "Erro: "+ t.getMessage());
+
             }
         });
 
 
-    }
+    }*/
 }
 
 

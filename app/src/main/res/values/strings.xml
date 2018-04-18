@@ -18,4 +18,6 @@
     <string name="title_activity_perfil">PerfilActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_conversas">Chat Administrador</string>
+    <string name="facebook_app_id">160102891335500</string>
+    <string name="fb_login_protocol_scheme">fb160102891335500</string>
 </resources>

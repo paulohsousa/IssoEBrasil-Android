@@ -3,13 +3,19 @@ package ieb.coffee.com.br.issoebrasil.model;
 import java.util.List;
 
 public class Escola {
+
     private String codEscola;
     private String nome;
+    private Double latitude;
+    private Double longitude;
     private String rede;
     private String email;
     private String esferaAdministrativa;
     private String categoriaEscolaPrivada;
     private String situacaoFuncionamento;
+    private String tipoConvenioPoderPublico;
+    private String cnpj;
+    private String telefone;
     private String seFimLucrativo;
     private String seConveniadaSetorPublico;
     private Double qtdSalasExistentes;
@@ -18,25 +24,9 @@ public class Escola {
     private Double qtdComputadores;
     private Double qtdComputadoresPorAluno;
     private Double qtdAlunos;
-    private String zona;
     private Endereco endereco;
+    private String zona;
     private Infraestrutura infraestrutura;
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Infraestrutura getInfraestrutura() {
-        return infraestrutura;
-    }
-
-    public void setInfraestrutura(Infraestrutura infraestrutura) {
-        this.infraestrutura = infraestrutura;
-    }
 
     public String getCodEscola() {
         return codEscola;
@@ -52,6 +42,22 @@ public class Escola {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public String getRede() {
@@ -92,6 +98,30 @@ public class Escola {
 
     public void setSituacaoFuncionamento(String situacaoFuncionamento) {
         this.situacaoFuncionamento = situacaoFuncionamento;
+    }
+
+    public String getTipoConvenioPoderPublico() {
+        return tipoConvenioPoderPublico;
+    }
+
+    public void setTipoConvenioPoderPublico(String tipoConvenioPoderPublico) {
+        this.tipoConvenioPoderPublico = tipoConvenioPoderPublico;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getSeFimLucrativo() {
@@ -158,6 +188,14 @@ public class Escola {
         this.qtdAlunos = qtdAlunos;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     public String getZona() {
         return zona;
     }
@@ -165,4 +203,13 @@ public class Escola {
     public void setZona(String zona) {
         this.zona = zona;
     }
+
+    public Infraestrutura getInfraestrutura() {
+        return infraestrutura;
+    }
+
+    public void setInfraestrutura(Infraestrutura infraestrutura) {
+        this.infraestrutura = infraestrutura;
+    }
+
 }
